@@ -75,7 +75,7 @@ class BulkImporter
         if (isset($val) && !is_numeric($val) && $val!='now()') {
             $val=DB::connection()->getPdo()->quote($val);
         }
-        if (!$val) {
+        if (!$val && $val !== 0) {
             $val='null';
         }
         return $val;
