@@ -37,11 +37,14 @@ class BulkImporter
         $this->insertBatch($batch);
     }
 
+    // Deprecating for security / safety reasons
+    /*
     public function delete()
     {
         $sql="delete from ".$this->table;
         $this->run($sql);
     }
+    */
 
     public function count()
     {
@@ -75,7 +78,7 @@ class BulkImporter
         if (isset($val) && !is_numeric($val) && $val!='now()') {
             $val=DB::connection()->getPdo()->quote($val);
         }
-        if (!$val && $val !== 0) {
+        if (!$val && $val != 0) {
             $val='null';
         }
         return $val;
